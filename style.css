@@ -1,0 +1,14 @@
+body {
+  /* Set line height to 1.5 times the font size
+	   and use the OS’s UI font as the website font
+	 */
+  font: 100%/1.5 system-ui;
+}
+
+img {
+  width: 300px;         /* or try 50%, 200px, etc. */
+  height: auto;         /* keeps the aspect ratio */
+  display: block;       /* lets us center it with margin */
+  margin: 20px auto;    /* adds space and centers it */
+  border-radius: 8px;   /* optional: slightly rounded corners */
+}
