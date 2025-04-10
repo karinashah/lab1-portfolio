@@ -5,6 +5,7 @@ body {
   font: 100%/1.5 system-ui;
   max-width: 100ch;
   margin-inline: max(1em, (100% - 100ch) / 2);
+  display: contents;
 }
 
 img {
@@ -13,4 +14,11 @@ img {
   display: block;       /* lets us center it with margin */
   margin: 20px auto;    /* adds space and centers it */
   border-radius: 8px;   /* optional: slightly rounded corners */
+}
+
+nav {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
 }
