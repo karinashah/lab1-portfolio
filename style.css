@@ -167,7 +167,6 @@ button:hover {
 
 /* Resume-specific styles */
 body.resume {
-  background-color: oklch(98% 0.01 250);
   padding-block: 2em;
 }
 
