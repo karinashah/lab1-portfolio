@@ -218,7 +218,6 @@ ul li {
   font-weight: 500;
 }
 
-/* Optional: Slight box or highlight for skills */
 section:last-of-type {
   background: oklch(from var(--color-accent) 97% 0.03 h);
   padding: 1em;
