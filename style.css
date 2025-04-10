@@ -167,50 +167,63 @@ button:hover {
 
 /* Resume-specific styles */
 body.resume {
-  background-color: oklch(98% 0.01 240); /* soft light blue background */
-  color: oklch(20% 0.05 240);            /* dark grayish-blue text */
-  font-family: Georgia, serif;
-  line-height: 1.6;
-  padding-bottom: 4em;
+  background-color: oklch(98% 0.01 250);
+  padding-block: 2em;
 }
 
-/* Section spacing and alignment */
-body.resume section {
+/* Sections of resume */
+section {
   margin-bottom: 2.5em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid oklch(90% 0.02 250);
 }
 
-/* Section headings */
-body.resume h2 {
-  font-size: 1.8em;
-  margin-bottom: 0.5em;
+/* Section headers */
+section > header h2 {
+  font-size: 1.75em;
   color: var(--color-accent);
-  border-bottom: 2px solid var(--color-accent);
-  padding-bottom: 0.2em;
+  margin-bottom: 0.5em;
 }
 
-/* Job / education headers */
-body.resume h3 {
-  font-size: 1.2em;
-  margin: 0.3em 0 0.2em;
+/* Article entries */
+article {
+  margin-bottom: 1.5em;
 }
 
-/* Descriptions */
-body.resume p {
-  margin: 0.2em 0 0.5em;
-  font-style: italic;
+article h3 {
+  font-size: 1.25em;
+  margin-bottom: 0.3em;
+  color: oklch(40% 0.1 250);
 }
 
-/* Time periods */
-body.resume time {
+article p {
+  margin: 0.2em 0 0.3em 0;
+  font-weight: 500;
+}
+
+article time {
   display: inline-block;
   font-size: 0.9em;
-  color: oklch(50% 0.05 240);
+  color: oklch(50% 0.1 250);
+  margin-top: 0.3em;
 }
 
-/* Skill list tweaks */
-body.resume ul {
-  list-style: square inside;
-  padding-left: 0;
+/* Skills list */
+ul {
+  list-style-type: "✦ ";
+  padding-left: 1em;
+}
+
+ul li {
+  margin-bottom: 0.4em;
+  font-weight: 500;
+}
+
+/* Optional: Slight box or highlight for skills */
+section:last-of-type {
+  background: oklch(from var(--color-accent) 97% 0.03 h);
+  padding: 1em;
+  border-radius: 0.5em;
 }
 
 
