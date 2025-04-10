@@ -1,24 +1,68 @@
+:root {
+  --color-accent: oklch(65% 50% 0);
+}
+
+/* General body styles */
 body {
-  /* Set line height to 1.5 times the font size
-	   and use the OS’s UI font as the website font
-	 */
   font: 100%/1.5 system-ui;
   max-width: 100ch;
   margin-inline: max(1em, (100% - 100ch) / 2);
-  display: contents;
+  padding-inline: 1em;
+  background: white;
+  color: black;
 }
 
+/* Style images */
 img {
-  width: 300px;         /* or try 50%, 200px, etc. */
-  height: auto;         /* keeps the aspect ratio */
-  display: block;       /* lets us center it with margin */
-  margin: 20px auto;    /* adds space and centers it */
-  border-radius: 8px;   /* optional: slightly rounded corners */
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 8px;
 }
 
+/* Navigation bar container */
 nav {
   display: flex;
   gap: 1em;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid oklch(80% 3% 200);
+  margin-bottom: 2em;
+}
+
+/* Nav links */
+nav a {
+  flex: 1;
+  text-align: center;
+  padding: 0.5em;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 0.2em solid transparent;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+/* Current page link */
+nav a.current {
+  border-bottom: 0.4em solid oklch(80% 3% 200);
+  padding-bottom: 0.3em;
+}
+
+/* Hover effects */
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: 400%;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
