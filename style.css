@@ -165,4 +165,52 @@ button:hover {
   line-height: 1.4;
 }
 
+/* Resume-specific styles */
+body.resume {
+  background-color: oklch(98% 0.01 240); /* soft light blue background */
+  color: oklch(20% 0.05 240);            /* dark grayish-blue text */
+  font-family: Georgia, serif;
+  line-height: 1.6;
+  padding-bottom: 4em;
+}
+
+/* Section spacing and alignment */
+body.resume section {
+  margin-bottom: 2.5em;
+}
+
+/* Section headings */
+body.resume h2 {
+  font-size: 1.8em;
+  margin-bottom: 0.5em;
+  color: var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 0.2em;
+}
+
+/* Job / education headers */
+body.resume h3 {
+  font-size: 1.2em;
+  margin: 0.3em 0 0.2em;
+}
+
+/* Descriptions */
+body.resume p {
+  margin: 0.2em 0 0.5em;
+  font-style: italic;
+}
+
+/* Time periods */
+body.resume time {
+  display: inline-block;
+  font-size: 0.9em;
+  color: oklch(50% 0.05 240);
+}
+
+/* Skill list tweaks */
+body.resume ul {
+  list-style: square inside;
+  padding-left: 0;
+}
+
 
