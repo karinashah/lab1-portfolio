@@ -4,6 +4,12 @@
 
 }
 
+html {
+  scroll-behavior: smooth;
+  font: inherit;
+}
+
+
 /* General body styles */
 body {
   font: 100%/1.5 system-ui;
