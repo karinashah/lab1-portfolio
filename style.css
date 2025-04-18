@@ -112,7 +112,7 @@ nav a:hover {
 /* Dark mode fix for hover */
 @media (prefers-color-scheme: dark) {
   nav a:hover {
-    background-color: color-mix(in oklch, var(--color-accent), canvas 70%);
+    background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
   }
 }
 
