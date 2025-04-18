@@ -90,13 +90,13 @@ nav a {
 
 /* Current page link */
 nav a.current {
-  border-bottom: 0.4em solid oklch(80% 3% 200);
+  border-bottom: 0.4em solid var(--border-color);
   padding-bottom: 0.3em;
 }
 
 /* Hover effects */
 nav a:hover {
-  border-bottom: 0.4em solid var(--color-accent);
+  color: var(--color-accent);
   padding-bottom: 0.3em;
   background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
