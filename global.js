@@ -11,7 +11,7 @@ document.body.prepend(nav);
 
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
   ? "/"                  // Local server
-  : "/lab1-portfolio/";         // GitHub Pages repo name
+  : "/lab1-portfolio/";   // GitHub Pages repo name
 
 for (let p of pages) {
   let url = p.url;
@@ -34,9 +34,7 @@ for (let p of pages) {
   }
 }
 
-document.body.insertAdjacentHTML(
-  'afterbegin',
-  `
+nav.insertAdjacentHTML('afterend', `
   <label class="color-scheme">
     Theme:
     <select>
