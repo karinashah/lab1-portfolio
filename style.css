@@ -96,8 +96,9 @@ nav a.current {
 
 /* Hover effects */
 nav a:hover {
-  border-bottom: 0.4em solid oklch(80% 3% 200);
-  background-color: oklch(from var(--color-accent) 95% 5% h);
+  border-bottom: 0.4em solid var(--color-accent);
+  padding-bottom: 0.3em;  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+  padding-bottom: 0.1em;
 }
 
 /* Headings */
