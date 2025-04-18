@@ -40,6 +40,7 @@ document.body.insertAdjacentHTML(
   <label class="color-scheme">
     Theme:
     <select>
+      <option value="light dark">Automatic</option>
       <option value="light">Light</option>
       <option value="dark">Dark</option>
     </select>
