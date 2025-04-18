@@ -109,10 +109,18 @@ nav a:hover {
   background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
-/* Dark mode fix for hover */
+/* Dark mode fix for hover
 @media (prefers-color-scheme: dark) {
   nav a:hover {
     background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+  }
+} */
+
+@media (prefers-color-scheme: dark) {
+  nav a:hover {
+    /* Mixing the background color with the accent color in dark mode */
+    background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+    color: var(--color-accent); /* Ensure text remains legible */
   }
 }
 
@@ -162,8 +170,11 @@ button {
   transition: background-color 0.2s;
 }
 
-button:hover {
+/* button:hover {
   background-color: oklch(from var(--color-accent) 60% 40% h);
+} */
+button:hover {
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%); /* Apply the same background mix */
 }
 
 button:focus {
