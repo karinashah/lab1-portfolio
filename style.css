@@ -6,35 +6,7 @@
 html {
   scroll-behavior: smooth;
   font: inherit;
-}
-
-/* THEME COLORS */
-html.light {
-  background-color: white;
-  color: black;
-  --color-accent: oklch(65% 50% 0);
-}
-
-html.dark {
-  background-color: black;
-  color: white;
-  --color-accent: oklch(85% 40% 30);
-}
-
-@media (prefers-color-scheme: dark) {
-  html.auto {
-    background-color: black;
-    color: white;
-    --color-accent: oklch(85% 40% 30);
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  html.auto {
-    background-color: white;
-    color: black;
-    --color-accent: oklch(65% 50% 0);
-  }
+  color-scheme: light dark; /* For automatic switching */
 }
 
 /* General body styles */
@@ -43,8 +15,8 @@ body {
   max-width: 100ch;
   margin-inline: max(1em, (100% - 100ch) / 2);
   padding-inline: 1em;
-  background: inherit;
-  color: inherit;
+  background: white;
+  color: black;
 }
 
 input,
@@ -97,6 +69,7 @@ nav a.current {
 /* Hover effects */
 nav a:hover {
   border-bottom: 0.4em solid oklch(80% 3% 200);
+  /* Updated hover background color */
   background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
@@ -150,17 +123,13 @@ button:hover {
   background-color: oklch(from var(--color-accent) 60% 40% h);
 }
 
-button:focus {
-  outline: 3px solid var(--color-accent);
-  outline-offset: 2px;
-}
-
 /* Projects grid */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
   gap: 1em;
   padding-block: 2em;
+  /* Create a row structure for children to inherit */
   grid-auto-rows: subgrid;
 }
 
@@ -198,4 +167,78 @@ button:focus {
 
 /* Resume-specific styles */
 body.resume {
-  padding-block:
+  padding-block: 2em;
+}
+
+/* Sections of resume */
+section {
+  margin-bottom: 2.5em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid oklch(90% 0.02 250);
+}
+
+/* Section headers */
+section > header h2 {
+  font-size: 1.75em;
+  color: var(--color-accent);
+  margin-bottom: 0.5em;
+}
+
+/* Article entries */
+article {
+  margin-bottom: 1.5em;
+}
+
+article h3 {
+  font-size: 1.25em;
+  margin-bottom: 0.3em;
+  color: oklch(40% 0.1 250);
+}
+
+article p {
+  margin: 0.2em 0 0.3em 0;
+  font-weight: 500;
+}
+
+article time {
+  display: inline-block;
+  font-size: 0.9em;
+  color: oklch(50% 0.1 250);
+  margin-top: 0.3em;
+}
+
+/* Skills list */
+ul {
+  list-style-type: "✦ ";
+  padding-left: 1em;
+}
+
+ul li {
+  margin-bottom: 0.4em;
+  font-weight: 500;
+}
+
+section:last-of-type {
+  background: oklch(from var(--color-accent) 97% 0.03 h);
+  padding: 1em;
+  border-radius: 0.5em;
+}
+
+button:focus {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Color Scheme toggle in the upper right */
+.color-scheme {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+  font-family: inherit;
+  background: inherit;
+  color: inherit;
+  border: 1px solid currentColor;
+  padding: 0.3em 0.5em;
+  border-radius: 0.4em;
+}
