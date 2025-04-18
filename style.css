@@ -6,7 +6,35 @@
 html {
   scroll-behavior: smooth;
   font: inherit;
-  color-scheme: light dark; /* For automatic switching */
+}
+
+/* THEME COLORS */
+html.light {
+  background-color: white;
+  color: black;
+  --color-accent: oklch(65% 50% 0);
+}
+
+html.dark {
+  background-color: black;
+  color: white;
+  --color-accent: oklch(85% 40% 30);
+}
+
+@media (prefers-color-scheme: dark) {
+  html.auto {
+    background-color: black;
+    color: white;
+    --color-accent: oklch(85% 40% 30);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html.auto {
+    background-color: white;
+    color: black;
+    --color-accent: oklch(65% 50% 0);
+  }
 }
 
 /* General body styles */
@@ -15,8 +43,8 @@ body {
   max-width: 100ch;
   margin-inline: max(1em, (100% - 100ch) / 2);
   padding-inline: 1em;
-  background: white;
-  color: black;
+  background: inherit;
+  color: inherit;
 }
 
 input,
@@ -122,13 +150,17 @@ button:hover {
   background-color: oklch(from var(--color-accent) 60% 40% h);
 }
 
+button:focus {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
 /* Projects grid */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
   gap: 1em;
   padding-block: 2em;
-  /* Create a row structure for children to inherit */
   grid-auto-rows: subgrid;
 }
 
@@ -169,21 +201,18 @@ body.resume {
   padding-block: 2em;
 }
 
-/* Sections of resume */
 section {
   margin-bottom: 2.5em;
   padding-bottom: 1.5em;
   border-bottom: 1px solid oklch(90% 0.02 250);
 }
 
-/* Section headers */
 section > header h2 {
   font-size: 1.75em;
   color: var(--color-accent);
   margin-bottom: 0.5em;
 }
 
-/* Article entries */
 article {
   margin-bottom: 1.5em;
 }
@@ -223,21 +252,11 @@ section:last-of-type {
   border-radius: 0.5em;
 }
 
-button:focus {
-  outline: 3px solid var(--color-accent);
-  outline-offset: 2px;
-}
-
-/* Color Scheme toggle in the upper right */
+/* Theme selector style */
 .color-scheme {
-  position: fixed;
+  position: absolute;
   top: 1rem;
   right: 1rem;
   font-size: 80%;
   font-family: inherit;
-  background: inherit;
-  color: inherit;
-  border: 1px solid currentColor;
-  padding: 0.3em 0.5em;
-  border-radius: 0.4em;
 }

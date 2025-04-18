@@ -10,8 +10,8 @@ let nav = document.createElement('nav');
 document.body.prepend(nav);
 
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-  ? "/"                  // Local server
-  : "/lab1-portfolio/";   // GitHub Pages repo name
+  ? "/"
+  : "/lab1-portfolio/";
 
 for (let p of pages) {
   let url = p.url;
@@ -34,7 +34,10 @@ for (let p of pages) {
   }
 }
 
-nav.insertAdjacentHTML('afterend', `
+// Insert theme toggle
+document.body.insertAdjacentHTML(
+  'afterbegin',
+  `
   <label class="color-scheme">
     Theme:
     <select>
@@ -48,12 +51,21 @@ nav.insertAdjacentHTML('afterend', `
 let select = document.querySelector('.color-scheme select');
 
 function setColorScheme(colorScheme) {
-  document.documentElement.style.setProperty('color-scheme', colorScheme);
+  document.documentElement.classList.remove('light', 'dark', 'auto');
+
+  if (colorScheme === 'light dark') {
+    document.documentElement.classList.add('auto');
+  } else {
+    document.documentElement.classList.add(colorScheme);
+  }
+
   select.value = colorScheme;
 }
 
 if ('colorScheme' in localStorage) {
   setColorScheme(localStorage.colorScheme);
+} else {
+  setColorScheme('light dark'); // Default to auto
 }
 
 select.addEventListener('input', function (event) {
