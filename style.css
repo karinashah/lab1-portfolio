@@ -224,4 +224,10 @@ section:last-of-type {
   border-radius: 0.5em;
 }
 
+button:focus {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+
 
