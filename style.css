@@ -7,7 +7,7 @@
 /* THEME COLORS */
 html.light {
   background-color: oklch(97% 4% 140);
-  color: oklch(30% 4% 140);
+  color: black;
   --color-accent: oklch(85% 10% 140);
   --tooltip-bg-light: oklch(97% 4% 140 / 95%);
   --tooltip-text-light: oklch(30% 4% 140);
