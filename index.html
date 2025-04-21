@@ -17,5 +17,21 @@
     src="images/linkedinkarinapic.jpeg" 
     alt="This image cannot be displayed, but it is a headshot photo of Karina Shah"
   >
+  <script>
+    const isHomePage = location.pathname === '/' || location.pathname.endsWith('/index.html');
+  
+    if (isHomePage) {
+      const leavesContainer = document.createElement('div');
+      leavesContainer.className = 'leaves';
+      leavesContainer.innerHTML = `
+        <div class="leaf">🍃</div>
+        <div class="leaf">🍂</div>
+        <div class="leaf">🍃</div>
+        <div class="leaf">🍂</div>
+        <div class="leaf">🍃</div>
+      `;
+      document.body.append(leavesContainer);
+    }
+  </script>
 </body>
 </html>
