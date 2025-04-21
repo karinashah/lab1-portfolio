@@ -7,7 +7,7 @@
 /* THEME COLORS */
 html.light {
   background-color: oklch(97% 4% 140);
-  color: black;
+  color: oklch(20% 0% 0);
   --color-accent: oklch(85% 10% 140);
   --tooltip-bg-light: oklch(97% 4% 140 / 95%);
   --tooltip-text-light: oklch(30% 4% 140);
@@ -237,7 +237,7 @@ section {
 
 section > header h2 {
   font-size: 1.75em;
-  color: var(--color-accent);
+  color: oklch(20% 0% 0);
   margin-bottom: 0.5em;
 }
 
@@ -248,7 +248,7 @@ article {
 article h3 {
   font-size: 1.25em;
   margin-bottom: 0.3em;
-  color: var(--color-accent);
+  color: oklch(20% 0% 0);
 }
 
 article p {
