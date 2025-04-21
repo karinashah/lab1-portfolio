@@ -195,7 +195,7 @@ button:focus {
   display: grid;
   grid-template-rows: subgrid;
   grid-row: span 3;
-  background: oklch(97% 2% 200);
+  background: oklch(85% 10% 140);
   padding: 1em;
   border-radius: 8px;
   box-shadow: 0 2px 5px oklch(0% 0% 0% / 0.05);
