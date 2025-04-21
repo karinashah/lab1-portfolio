@@ -248,7 +248,7 @@ article {
 article h3 {
   font-size: 1.25em;
   margin-bottom: 0.3em;
-  color: oklch(40% 0.1 250);
+  color: var(--color-accent);
 }
 
 article p {
@@ -259,7 +259,7 @@ article p {
 article time {
   display: inline-block;
   font-size: 0.9em;
-  color: oklch(50% 0.1 250);
+  color: oklch(70% 6% 140);
   margin-top: 0.3em;
 }
 
