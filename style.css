@@ -1,46 +1,47 @@
 :root {
-  --color-accent: oklch(65% 50% 0);
+  --color-accent: oklch(85% 10% 140);
+  --border-color: oklch(75% 8% 140 / 50%);
   accent-color: var(--color-accent);
 }
 
 /* THEME COLORS */
 html.light {
-  background-color: white;
-  color: black;
-  --color-accent: oklch(65% 50% 0);
-  --tooltip-bg-light: rgba(255, 255, 255, 0.95);
-  --tooltip-text-light: black;
-  --border-color: oklch(50% 10% 200 / 40%);
+  background-color: oklch(97% 4% 140);
+  color: oklch(30% 4% 140);
+  --color-accent: oklch(85% 10% 140);
+  --tooltip-bg-light: oklch(97% 4% 140 / 95%);
+  --tooltip-text-light: oklch(30% 4% 140);
+  --border-color: oklch(75% 8% 140 / 50%);
 }
 
 html.dark {
-  background-color: black;
-  color: white;
-  --color-accent: oklch(85% 40% 30);
-  --tooltip-bg-dark: rgba(30, 30, 30, 0.95);
-  --tooltip-text-dark: white;
-  --border-color: oklch(85% 20% 40 / 40%);
+  background-color: oklch(20% 4% 140);
+  color: oklch(90% 4% 140);
+  --color-accent: oklch(85% 10% 140);
+  --tooltip-bg-dark: oklch(20% 4% 140 / 95%);
+  --tooltip-text-dark: oklch(90% 4% 140);
+  --border-color: oklch(75% 8% 140 / 50%);
 }
 
 @media (prefers-color-scheme: dark) {
   html.auto {
-    background-color: black;
-    color: white;
-    --color-accent: oklch(85% 40% 30);
-    --tooltip-bg-dark: rgba(30, 30, 30, 0.95);
-    --tooltip-text-dark: white;
-    --border-color: oklch(85% 20% 40 / 40%);
+    background-color: oklch(20% 4% 140);
+    color: oklch(90% 4% 140);
+    --color-accent: oklch(85% 10% 140);
+    --tooltip-bg-dark: oklch(20% 4% 140 / 95%);
+    --tooltip-text-dark: oklch(90% 4% 140);
+    --border-color: oklch(75% 8% 140 / 50%);
   }
 }
 
 @media (prefers-color-scheme: light) {
   html.auto {
-    background-color: white;
-    color: black;
-    --color-accent: oklch(65% 50% 0);
-    --tooltip-bg-light: rgba(255, 255, 255, 0.95);
-    --tooltip-text-light: black;
-    --border-color: oklch(50% 10% 200 / 40%);
+    background-color: oklch(97% 4% 140);
+    color: oklch(30% 4% 140);
+    --color-accent: oklch(85% 10% 140);
+    --tooltip-bg-light: oklch(97% 4% 140 / 95%);
+    --tooltip-text-light: oklch(30% 4% 140);
+    --border-color: oklch(75% 8% 140 / 50%);
   }
 }
 
