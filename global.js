@@ -72,3 +72,61 @@ select.addEventListener('input', function (event) {
   localStorage.colorScheme = event.target.value;
   setColorScheme(event.target.value);
 });
+
+export async function fetchJSON(url) {
+  try {
+    // Fetch the JSON file from the given URL
+    const response = await fetch(url);
+    console.log(response); // See the full response in dev tools
+
+    // Check if the response was successful
+    if (!response.ok) {
+      throw new Error(`Failed to fetch projects: ${response.statusText}`);
+    }
+
+    // Parse the response into JSON
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching or parsing JSON data:', error);
+  }
+}
+
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+  // 1. Validate containerElement
+  if (!containerElement) {
+    console.error('Invalid container element provided.');
+    return;
+  }
+
+  // 2. Clear existing content
+  containerElement.innerHTML = '';
+
+  // 3. Validate heading level (optional safety check)
+  const validHeadings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+  if (!validHeadings.includes(headingLevel)) {
+    console.warn(`Invalid heading level "${headingLevel}" provided. Defaulting to h2.`);
+    headingLevel = 'h2';
+  }
+
+  // 4. Loop through each project and create an article
+  for (const project of projects) {
+    const article = document.createElement('article');
+
+    // Check if necessary project data exists, otherwise use fallback values
+    const title = project.title || 'Untitled Project';
+    const image = project.image || 'default-image.png'; // You can replace this with a real default image
+    const description = project.description || 'No description available.';
+
+    // 5. Populate the article content dynamically
+    article.innerHTML = `
+      <${headingLevel}>${title}</${headingLevel}>
+      <img src="${image}" alt="${title}">
+      <p>${description}</p>
+    `;
+
+    // 6. Append the article to the container
+    containerElement.appendChild(article);
+  }
+}
+
