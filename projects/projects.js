@@ -9,3 +9,11 @@ const projectsContainer = document.querySelector('.projects');
 
 // 4. Render the projects into the container
 renderProjects(projects, projectsContainer, 'h2');
+
+// Select the title element
+const titleElement = document.querySelector('.projects-title');
+
+// Update the title with the number of projects
+if (titleElement) {
+  titleElement.textContent = `Projects (${projects.length})`;
+}
