@@ -1,3 +1,5 @@
+import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
+
 import { fetchJSON, renderProjects } from './global.js';
 
 // Fetch all projects
@@ -11,3 +13,9 @@ const projectsContainer = document.querySelector('.projects');
 
 // Render the 3 latest projects
 renderProjects(latestProjects, projectsContainer, 'h2');
+
+const githubData = await fetchGitHubData(karinashah);
+console.log(githubData);
+
+const profileStats = document.querySelector('#profile-stats');
+
