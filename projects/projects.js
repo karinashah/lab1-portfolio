@@ -19,9 +19,53 @@ if (titleElement) {
   titleElement.textContent = `${projects.length} Projects`;
 }
 
-let arc = d3.arc().innerRadius(0).outerRadius(50)({
-  startAngle: 0,
-  endAngle: 2 * Math.PI,
+let rolledData = d3.rollups(
+  projects,
+  (v) => v.length,
+  (d) => d.year,
+);
+
+// Convert rolled data into objects
+let data = rolledData.map(([year, count]) => {
+  return { value: count, label: year };
 });
 
-d3.select('svg').append('path').attr('d', arc).attr('fill', 'red');
+// -----------------------------
+// Draw pie chart with labels
+// -----------------------------
+let arcGenerator = d3.arc()
+  .innerRadius(0)
+  .outerRadius(50);
+
+let sliceGenerator = d3.pie()
+  .value((d) => d.value); // access value in { value, label }
+
+let arcData = sliceGenerator(data);
+
+let colors = d3.scaleOrdinal(d3.schemeTableau10);
+
+// Clear existing SVG just in case
+const svg = d3.select('svg#projects-pie-plot');
+svg.selectAll('*').remove();
+
+// Draw pie slices
+arcData.forEach((d, idx) => {
+  svg.append('path')
+    .attr('d', arcGenerator(d))
+    .attr('fill', colors(idx))
+    .attr('stroke', 'white')
+    .attr('stroke-width', 1);
+});
+
+// -----------------------------
+// Step 2.2: Build legend
+// -----------------------------
+let legend = d3.select('.legend');
+legend.selectAll('*').remove(); // clear old legend if needed
+
+data.forEach((d, idx) => {
+  legend.append('li')
+    .attr('style', `--color:${colors(idx)}`)
+    .attr('class', 'legend-item')
+    .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+});
