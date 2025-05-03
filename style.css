@@ -450,3 +450,48 @@ html {
   display: inline-block;
   border-radius: 0.25em;
 }
+
+/* Highlight hovered wedges */
+svg:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+path {
+  transition: 300ms;
+  cursor: pointer;
+}
+
+/* Selected slice + legend style */
+.selected {
+  --color: oklch(60% 45% 0) !important;
+}
+
+.selected:is(path) {
+  fill: var(--color);
+}
+
+/* Legend layout + swatch */
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 1em;
+  margin-top: 1em;
+  padding: 1em;
+  border: 1px solid var(--border-color, #ccc);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.legend-item .swatch {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: var(--color);
+  aspect-ratio: 1 / 1;
+  border-radius: 0.25em;
+}
+
