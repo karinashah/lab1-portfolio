@@ -34,10 +34,6 @@
     "year": "2022",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Ea reiciendis ad facere corporis eos illum, pariatur reprehenderit assumenda blanditiis illo, harum commodi eaque in error hic?"
-    "title": "Doloremque dolores praesentium ipsam.",
-    "year": "2023",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Distinctio cumque quod sunt neque, temporibus quo at exercitationem illo, libero delectus dolorum beatae tenetur, natus quam odio?"
   },
   {
     "title": "Assumenda ab autem repudiandae.",
@@ -66,6 +62,12 @@
   {
     "title": "Ipsam error nemo amet!",
     "year": "2024",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Quisquam eum quos ex, aperiam deserunt sunt? Delectus molestias laborum perferendis libero quae? Perspiciatis quis corrupti, assumenda eligendi culpa."
+  },
+  {
+    "title": "Ipsam error nemo amet!",
+    "year": "2019",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Quisquam eum quos ex, aperiam deserunt sunt? Delectus molestias laborum perferendis libero quae? Perspiciatis quis corrupti, assumenda eligendi culpa."
   }
