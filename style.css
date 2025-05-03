@@ -470,14 +470,22 @@ path {
   fill: var(--color);
 }
 
-/* Legend layout + swatch */
+svg:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+path {
+  transition: 300ms;
+  cursor: pointer;
+}
+
 .legend {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
   gap: 1em;
-  margin-top: 1em;
+  border: 1px solid gray;
   padding: 1em;
-  border: 1px solid var(--border-color, #ccc);
+  margin-block: 2em;
 }
 
 .legend-item {
@@ -486,12 +494,22 @@ path {
   gap: 0.5em;
 }
 
-.legend-item .swatch {
+.swatch {
   display: inline-block;
   width: 1em;
   height: 1em;
-  background-color: var(--color);
   aspect-ratio: 1 / 1;
-  border-radius: 0.25em;
+  border-radius: 50%;
+  background-color: var(--color);
 }
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+}
+
+.selected:is(path) {
+  fill: var(--color);
+}
+
+
 
