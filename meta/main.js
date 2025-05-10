@@ -123,7 +123,19 @@ function renderCommitInfo(data, commits) {
       .scaleLinear()
       .domain([0, 24])
       .range([usableArea.bottom, usableArea.top]);
-  
+
+      // Add horizontal gridlines before axes
+const gridlines = svg
+  .append('g')
+  .attr('class', 'gridlines')
+  .attr('transform', `translate(${usableArea.left}, 0)`);
+
+gridlines.call(
+  d3.axisLeft(yScale)
+    .tickFormat('') // no labels
+    .tickSize(-usableArea.width) // extend ticks across width
+);
+
     // Draw dots
     const dots = svg.append('g').attr('class', 'dots');
   
@@ -134,8 +146,12 @@ function renderCommitInfo(data, commits) {
       .attr('cx', d => xScale(d.datetime))
       .attr('cy', d => yScale(d.hourFrac))
       .attr('r', 5)
-      .attr('fill', 'steelblue');
-  
+      .attr('fill', 'steelblue')
+      .attr('opacity', 0.7)
+      .attr('stroke', 'white')
+      .attr('stroke-width', 1);
+
+
     // Axes
     const xAxis = d3.axisBottom(xScale);
     const yAxis = d3.axisLeft(yScale)

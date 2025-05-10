@@ -482,5 +482,15 @@ path {
   font-weight: 600;
 }
 
+.gridlines line {
+  stroke: oklch(80% 0.05 240);
+  stroke-opacity: 0.3;
+  shape-rendering: crispEdges;
+}
+
+.gridlines path {
+  display: none;
+}
+
 
 
