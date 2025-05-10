@@ -12,11 +12,29 @@
       <p>This page contains meta information about our codebase, such as file count, line count, and more.</p>
     </header>
   
+    <!-- ✅ Add this -->
+    <dl id="commit-tooltip" class="info tooltip">
+      <dt>Commit</dt>
+      <dd><a href="" id="commit-link" target="_blank"></a></dd>
+  
+      <dt>Date</dt>
+      <dd id="commit-date"></dd>
+  
+      <dt>Time</dt>
+      <dd id="commit-time"></dd>
+  
+      <dt>Author</dt>
+      <dd id="commit-author"></dd>
+  
+      <dt>Lines edited</dt>
+      <dd id="commit-lines"></dd>
+    </dl>
+  
     <h2>Commits by time of day</h2>
-<div id="chart"></div>
-
+    <div id="chart"></div>
+  
     <main>
-      <div id="stats"></div> <!-- placeholder for visualizations -->
+      <div id="stats"></div>
       <section>
         <h2>Coming Soon!</h2>
         <p>We'll visualize different statistics of our codebase right here.</p>

@@ -140,16 +140,22 @@ gridlines.call(
     const dots = svg.append('g').attr('class', 'dots');
   
     dots
-      .selectAll('circle')
-      .data(commits)
-      .join('circle')
-      .attr('cx', d => xScale(d.datetime))
-      .attr('cy', d => yScale(d.hourFrac))
-      .attr('r', 5)
-      .attr('fill', 'steelblue')
-      .attr('opacity', 0.7)
-      .attr('stroke', 'white')
-      .attr('stroke-width', 1);
+  .selectAll('circle')
+  .data(commits)
+  .join('circle')
+  .attr('cx', d => xScale(d.datetime))
+  .attr('cy', d => yScale(d.hourFrac))
+  .attr('r', 5)
+  .attr('fill', 'steelblue')
+  .attr('opacity', 0.7)
+  .attr('stroke', 'white')
+  .attr('stroke-width', 1)
+  .on('mouseenter', (event, commit) => {
+    renderTooltipContent(commit);
+  })
+  .on('mouseleave', () => {
+    renderTooltipContent({}); // Clear or hide tooltip
+  });
 
 
     // Axes
@@ -173,5 +179,22 @@ gridlines.call(
   renderCommitInfo(data, commits);
   renderScatterPlot(data, commits);
 
-
+  function renderTooltipContent(commit) {
+    if (Object.keys(commit).length === 0) return;
+  
+    const link = document.getElementById('commit-link');
+    const date = document.getElementById('commit-date');
+    const time = document.getElementById('commit-time');
+    const author = document.getElementById('commit-author');
+    const lines = document.getElementById('commit-lines');
+  
+    link.href = commit.url;
+    link.textContent = commit.id;
+  
+    date.textContent = commit.datetime?.toLocaleString('en', { dateStyle: 'full' });
+    time.textContent = commit.datetime?.toLocaleTimeString('en', { timeStyle: 'short' });
+    author.textContent = commit.author;
+    lines.textContent = commit.totalLines;
+  }
+  
   
