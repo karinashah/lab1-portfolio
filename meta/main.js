@@ -45,3 +45,54 @@ function processCommits(data) {
 let data = await loadData();
 let commits = processCommits(data);
 console.log(commits);
+
+
+function renderCommitInfo(data, commits) {
+    const dl = d3.select('#stats').append('dl').attr('class', 'stats');
+  
+    // Basic stats
+    dl.append('dt').html('Total <abbr title="Lines of Code">LOC</abbr>');
+    dl.append('dd').text(data.length);
+  
+    dl.append('dt').text('Total commits');
+    dl.append('dd').text(commits.length);
+  
+    // Advanced stats
+    const numFiles = d3.groups(data, d => d.file).length;
+    const avgFileLength = d3.mean(
+      d3.rollups(data, v => d3.max(v, d => d.line), d => d.file),
+      d => d[1]
+    );
+    const avgLineLength = d3.mean(data, d => d.length);
+    const maxDepth = d3.max(data, d => d.depth);
+    const longestLine = d3.greatest(data, d => d.length);
+    const timeOfDayGroups = d3.rollups(
+      data,
+      v => v.length,
+      d => d.datetime.toLocaleString('en', { hour: 'numeric', hour12: false })
+    );
+    const busiestHour = d3.greatest(timeOfDayGroups, d => d[1])?.[0];
+  
+    // Render extras
+    dl.append('dt').text('Number of files');
+    dl.append('dd').text(numFiles);
+  
+    dl.append('dt').text('Average file length (lines)');
+    dl.append('dd').text(avgFileLength.toFixed(1));
+  
+    dl.append('dt').text('Average line length (chars)');
+    dl.append('dd').text(avgLineLength.toFixed(1));
+  
+    dl.append('dt').text('Maximum depth');
+    dl.append('dd').text(maxDepth);
+  
+    dl.append('dt').text('Longest line');
+    dl.append('dd').text(longestLine?.content || '—');
+  
+    dl.append('dt').text('Busiest hour');
+    dl.append('dd').text(`${busiestHour}:00`);
+  }
+
+renderCommitInfo(data, commits);
+
+  
