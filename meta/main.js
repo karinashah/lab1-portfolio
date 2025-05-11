@@ -75,9 +75,6 @@ function renderTooltipContent(commit) {
 function renderCommitInfo(data, commits) {
   const dl = d3.select('#stats').append('dl').attr('class', 'stats');
 
-  dl.append('dt').html('Total <abbr title="Lines of Code">LOC</abbr>');
-  dl.append('dd').text(data.length);
-
   dl.append('dt').text('Total commits');
   dl.append('dd').text(commits.length);
 
@@ -104,12 +101,6 @@ function renderCommitInfo(data, commits) {
 
   dl.append('dt').text('Average line length (chars)');
   dl.append('dd').text(avgLineLength.toFixed(1));
-
-  dl.append('dt').text('Maximum depth');
-  dl.append('dd').text(maxDepth);
-
-  dl.append('dt').text('Longest line');
-  dl.append('dd').text(longestLine?.content || '—');
 
   dl.append('dt').text('Busiest hour');
   dl.append('dd').text(`${busiestHour}:00`);
