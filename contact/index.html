@@ -10,27 +10,41 @@
 
   <h1>Contact Me</h1>
 
-  <form action="mailto:k7shah@ucsd.edu" method="GET" enctype="text/plain">
-    <label>
-      Email:
-      <input type="email" name="email" required>
-    </label>
-    <br><br>
-
+  <form id="contact-form" action="mailto:k7shah@ucsd.edu" method="GET">
     <label>
       Subject:
-      <input name="subject" required>
+      <input name="subject" required placeholder="Say hello!">
     </label>
     <br><br>
-
+  
     <label>
       Body:
-      <textarea name="body" rows="5" cols="40" required></textarea>
+      <textarea name="body" rows="5" cols="40" required placeholder="Your message..."></textarea>
     </label>
     <br><br>
-
-    <button type="submit">Submit</button>
+  
+    <button type="submit">Send</button>
   </form>
+
+  <script>
+    const form = document.getElementById('contact-form');
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const data = new FormData(form);
+      const params = [];
+
+      for (let [name, value] of data) {
+        params.push(`${name}=${encodeURIComponent(value)}`);
+      }
+
+      const query = params.join('&');
+      const url = `${form.action}?${query}`;
+
+      location.href = url; // Opens the mail client with properly encoded subject + body
+    });
+  </script>
 
 </body>
 </html>
