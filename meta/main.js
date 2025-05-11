@@ -137,17 +137,14 @@ function renderScatterPlot(data, commits) {
     .attr('stroke', 'white')
     .attr('stroke-width', 1)
     .on('mouseenter', (event, commit) => {
-      renderTooltipContent(commit);
-      updateTooltipVisibility(true);
-    })
-    .on('mousemove', (event) => {
-      const tooltip = document.getElementById('commit-tooltip');
-      tooltip.style.left = `${event.pageX + 15}px`;
-      tooltip.style.top = `${event.pageY + 15}px`;
-    })
-    .on('mouseleave', () => {
-      updateTooltipVisibility(false);
-    });
+        renderTooltipContent(commit);
+        updateTooltipVisibility(true);
+        updateTooltipPosition(event);
+      })
+      .on('mousemove', updateTooltipPosition)
+      .on('mouseleave', () => {
+        updateTooltipVisibility(false);
+      });      
 
   svg.append('g')
     .attr('transform', `translate(0, ${usableArea.bottom})`)
@@ -175,6 +172,13 @@ function renderTooltipContent(commit) {
   author.textContent = commit.author;
   lines.textContent = commit.totalLines;
 }
+
+function updateTooltipPosition(event) {
+    const tooltip = document.getElementById('commit-tooltip');
+    tooltip.style.left = `${event.clientX + 15}px`;
+    tooltip.style.top = `${event.clientY + 15}px`;
+  }
+  
 
 // Run everything
 const data = await loadData();
