@@ -42,6 +42,11 @@ function processCommits(data) {
     });
 }
 
+function updateTooltipVisibility(isVisible) {
+  const tooltip = document.getElementById('commit-tooltip');
+  tooltip.hidden = !isVisible;
+}
+
 function renderCommitInfo(data, commits) {
   const dl = d3.select('#stats').append('dl').attr('class', 'stats');
 
@@ -114,17 +119,10 @@ function renderScatterPlot(data, commits) {
     .domain([0, 24])
     .range([usableArea.bottom, usableArea.top]);
 
-  // Add gridlines
-  const gridlines = svg
-    .append('g')
+  svg.append('g')
     .attr('class', 'gridlines')
-    .attr('transform', `translate(${usableArea.left}, 0)`);
-
-  gridlines.call(
-    d3.axisLeft(yScale)
-      .tickFormat('')
-      .tickSize(-usableArea.width)
-  );
+    .attr('transform', `translate(${usableArea.left}, 0)`)
+    .call(d3.axisLeft(yScale).tickFormat('').tickSize(-usableArea.width));
 
   const dots = svg.append('g').attr('class', 'dots');
 
@@ -140,6 +138,7 @@ function renderScatterPlot(data, commits) {
     .attr('stroke-width', 1)
     .on('mouseenter', (event, commit) => {
       renderTooltipContent(commit);
+      updateTooltipVisibility(true);
     })
     .on('mousemove', (event) => {
       const tooltip = document.getElementById('commit-tooltip');
@@ -147,21 +146,16 @@ function renderScatterPlot(data, commits) {
       tooltip.style.top = `${event.pageY + 15}px`;
     })
     .on('mouseleave', () => {
-      renderTooltipContent({});
+      updateTooltipVisibility(false);
     });
-
-  // Axes
-  const xAxis = d3.axisBottom(xScale);
-  const yAxis = d3.axisLeft(yScale)
-    .tickFormat(d => String(d % 24).padStart(2, '0') + ':00');
 
   svg.append('g')
     .attr('transform', `translate(0, ${usableArea.bottom})`)
-    .call(xAxis);
+    .call(d3.axisBottom(xScale));
 
   svg.append('g')
     .attr('transform', `translate(${usableArea.left}, 0)`)
-    .call(yAxis);
+    .call(d3.axisLeft(yScale).tickFormat(d => String(d % 24).padStart(2, '0') + ':00'));
 }
 
 function renderTooltipContent(commit) {
@@ -172,10 +166,7 @@ function renderTooltipContent(commit) {
   const author = document.getElementById('commit-author');
   const lines = document.getElementById('commit-lines');
 
-  if (!commit || Object.keys(commit).length === 0) {
-    tooltip.style.display = 'none';
-    return;
-  }
+  if (!commit || Object.keys(commit).length === 0) return;
 
   link.href = commit.url;
   link.textContent = commit.id;
@@ -183,12 +174,10 @@ function renderTooltipContent(commit) {
   time.textContent = commit.datetime?.toLocaleTimeString('en', { timeStyle: 'short' });
   author.textContent = commit.author;
   lines.textContent = commit.totalLines;
-
-  tooltip.style.display = 'grid';
 }
 
 // Run everything
-let data = await loadData();
-let commits = processCommits(data);
+const data = await loadData();
+const commits = processCommits(data);
 renderCommitInfo(data, commits);
 renderScatterPlot(data, commits);
