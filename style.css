@@ -280,7 +280,9 @@ section:last-of-type {
   border-radius: 0.5em;
 }
 
-/* Tooltip */
+/* ---------------------------------------
+   Tooltip Styling & Interaction
+---------------------------------------- */
 .tooltip {
   position: fixed;
   top: 1em;
@@ -293,19 +295,59 @@ section:last-of-type {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* soft shadow */
   backdrop-filter: blur(8px); /* frosted glass effect */
   border: 1px solid var(--border-color);
-  display: none; /* hidden by default */
-  pointer-events: none; /* let mouse events pass through */
   font-size: 0.9em;
   line-height: 1.4;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Dark mode adjustments */
+.tooltip[hidden] {
+  opacity: 0;
+  visibility: hidden;
+}
+
 @media (prefers-color-scheme: dark) {
   .tooltip {
     background-color: rgba(32, 32, 32, 0.85);
     color: var(--tooltip-text-dark);
     border-color: rgba(255, 255, 255, 0.1);
   }
+}
+
+/* ---------------------------------------
+   Dot Hover and Selected States
+---------------------------------------- */
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+
+circle.selected {
+  fill: #ff6b6b;
+  stroke: black;
+  stroke-width: 2px;
+}
+
+/* ---------------------------------------
+   Brushing Selection Rectangle
+---------------------------------------- */
+@keyframes marching-ants {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
+
+.selection {
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
 }
 
 /* Theme selector style */
