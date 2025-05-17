@@ -1,34 +1,41 @@
 [
   {
-    "title": "Deceptive Visualizations",
-    "year": "2021",
+    "title": "The Effect of Prediabetes on the Body’s Ability to Regulate Blood Glucose",
+    "year": "2025",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, velit ullam error eum eos earum veniam optio reprehenderit in?"
+    "description": "In this project, we explored how glucose volume varies between normal and prediabetic patients.",
+    "link": "https://lindbergryan04.github.io/cgm-time-series-analysis/"
   },
+  {
+    "title": "Bikewatching in Boston",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "An immersive, interactive map visualization of bike traffic in the Boston area during different times of the day.",
+    "link": "https://karinashah.github.io/bikewatching/"
+  },
+  {
+    "title": "Deceptive Visualizations",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Data Visualizations can often be deceptive. In this project, I explore how one abortion dataset can be interpreted in two very different ways through deceptive visualizations.",
+    "link": "https://karinashah.github.io/dsc106-project2/"
+  },
+
   {
     "title": "Analysis on the Relationship Between Amount of Carbohydrates on Recipe Rating",
-    "year": "2022",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Perspiciatis consectetur maxime ullam? Libero alias debitis animi aperiam provident sapiente nesciunt architecto explicabo minima veniam suscipit consequatur aut."
-  },
-  {
-    "title": "Perferendis facere ipsum harum?",
-    "year": "2023",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Tempore quod delectus atque perspiciatis enim tempora porro inventore dolorem eum voluptatibus impedit quaerat velit, ea nemo perferendis consequuntur."
-  },
-  {
-    "title": "Perferendis dolor officia rem.",
     "year": "2024",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Odio exercitationem facilis rem. Illo aliquam magni fugit distinctio eveniet porro nemo voluptatum adipisci ipsa excepturi. Dignissimos, iure ipsa consequuntur."
+    "description": "Focuses on exploring the relationship between the rating of a recipe and the proportion of carbohydrates that contributed to the total calorie amount.",
+    "link": "https://karinashah.github.io/recipes-ratings-analysis/"
   },
+
   {
     "title": "Ut voluptatibus laboriosam vel!",
     "year": "2021",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Enim repellat minima hic labore, libero tenetur voluptas, ut iusto sunt velit omnis quam vitae sed, vero in dolores reiciendis."
   },
+
   {
     "title": "Sequi accusantium molestias temporibus.",
     "year": "2022",
