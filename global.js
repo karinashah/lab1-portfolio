@@ -94,43 +94,52 @@ export async function fetchJSON(url) {
 }
 
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
-  // 1. Validate containerElement
   if (!containerElement) {
     console.error('Invalid container element provided.');
     return;
   }
 
-  // 2. Clear existing content
   containerElement.innerHTML = '';
 
-  // 3. Validate heading level (optional safety check)
   const validHeadings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
   if (!validHeadings.includes(headingLevel)) {
     console.warn(`Invalid heading level "${headingLevel}" provided. Defaulting to h2.`);
     headingLevel = 'h2';
   }
 
-  // 4. Loop through each project and create an article
   for (const project of projects) {
     const article = document.createElement('article');
-
-    // Check if necessary project data exists, otherwise use fallback values
     const title = project.title || 'Untitled Project';
-    const image = project.image || 'default-image.png'; // You can replace this with a real default image
+    const image = project.image || 'default-image.png';
     const description = project.description || 'No description available.';
+    const year = project.year || '';
 
-    // 5. Populate the article content dynamically
-    article.innerHTML = `
-  <${headingLevel}>${title}</${headingLevel}>
-  <img src="${image}" alt="${title}">
-  <div class="project-text">
-    <p>${description}</p>
-    <p class="project-year">${project.year}</p>
-  </div>
-`;
+    if (project.link) {
+      const link = document.createElement('a');
+      link.href = project.link;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.className = 'project-link';
+      link.innerHTML = `
+        <${headingLevel}>${title}</${headingLevel}>
+        <img src="${image}" alt="${title}">
+        <div class="project-text">
+          <p>${description}</p>
+          <p class="project-year">${year}</p>
+        </div>
+      `;
+      article.appendChild(link);
+    } else {
+      article.innerHTML = `
+        <${headingLevel}>${title}</${headingLevel}>
+        <img src="${image}" alt="${title}">
+        <div class="project-text">
+          <p>${description}</p>
+          <p class="project-year">${year}</p>
+        </div>
+      `;
+    }
 
-
-    // 6. Append the article to the container
     containerElement.appendChild(article);
   }
 }
