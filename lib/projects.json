@@ -2,21 +2,21 @@
   {
     "title": "The Effect of Prediabetes on the Body’s Ability to Regulate Blood Glucose",
     "year": "2025",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "image": "glucose.png",
     "description": "In this project, we explored how glucose volume varies between normal and prediabetic patients.",
     "link": "https://lindbergryan04.github.io/cgm-time-series-analysis/"
   },
   {
     "title": "Bikewatching in Boston",
     "year": "2025",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "image": "bikewatching.png",
     "description": "An immersive, interactive map visualization of bike traffic in the Boston area during different times of the day.",
     "link": "https://karinashah.github.io/bikewatching/"
   },
   {
     "title": "Deceptive Visualizations",
     "year": "2025",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "image": "chloropleth.png",
     "description": "Data Visualizations can often be deceptive. In this project, I explore how one abortion dataset can be interpreted in two very different ways through deceptive visualizations.",
     "link": "https://karinashah.github.io/dsc106-project2/"
   },
@@ -24,8 +24,8 @@
   {
     "title": "Analysis on the Relationship Between Amount of Carbohydrates on Recipe Rating",
     "year": "2024",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Focuses on exploring the relationship between the rating of a recipe and the proportion of carbohydrates that contributed to the total calorie amount.",
+    "image": "carb.png",
+    "description": "Explores the relationship between a recipe's rating and the proportion of carbohydrates that contributed to its total calorie amount.",
     "link": "https://karinashah.github.io/recipes-ratings-analysis/"
   }
 ]
