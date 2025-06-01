@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Meta</title>
-  <link rel="stylesheet" href="../style.css" />
-  <script type="module" src="../global.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta</title>
+    <link rel="stylesheet" href="../style.css">
+    <script type="module" src="../global.js"></script>
+    <script src="main.js" type="module"></script>
 </head>
 <body>
-  <header>
     <h1>Meta</h1>
-    <p>This page includes stats about the code of this website.</p>
-  </header>
 
-  <!-- Tooltip -->
-  <dl id="commit-tooltip" class="info tooltip" hidden>
-    <dt>Commit</dt>
-    <dd><a href="" id="commit-link" target="_blank"></a></dd>
 
-    <dt>Date</dt>
-    <dd id="commit-date"></dd>
+    <h2>Commits by time of day</h2>
 
-    <dt>Time</dt>
-    <dd id="commit-time"></dd>
+    <div id="time-slider">
+        <label>
+            Filter by time:
+            <input type="range" id="commit-progress" min="0" max="100" value="0" style="padding:0;">
+            <span>Show commits until: <time id="commit-time"></time></span>
+          </label>
+    </div>
 
-    <dt>Author</dt>
-    <dd id="commit-author"></dd>
-
-    <dt>Lines edited</dt>
-    <dd id="commit-lines"></dd>
-  </dl>
-  
-  <main>
     <div id="stats"></div>
-  </main>
 
-  <!-- Scatter plot and stats -->
-  <h2>Commits by time of day</h2>
-  <div id="chart"></div>
+    <dl id="commit-tooltip" class="info tooltip" hidden>
+        <dt>Commit</dt>
+        <dd>
+          <a href="" id="commit-link" target="_blank"></a>
+        </dd>
+      
+        <dt>Date</dt>
+        <dd id="commit-date"></dd>
+    </dl>
 
-  <!-- Brushing summary -->
-  <p id="selection-count">No commits selected</p>
-  <dl id="language-breakdown" class="stats"></dl>
+    <div id="scrolly-1">
+        <div id="scatter-story">Below is a record of all commits and their details</div>
+        <div id="scatter-plot">
+            <div id="chart"></div>
+            <dl id="files"></dl>
+        </div>
+      </div>
 
-  <script type="module" src="main.js"></script>
+    <p id="selection-count">No commits selected</p>
+    <dl id="language-breakdown" class="stats"></dl>
 </body>
 </html>
