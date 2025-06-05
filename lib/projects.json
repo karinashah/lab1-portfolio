@@ -3,7 +3,7 @@
     "title": "SleepTracker",
     "year": "2025",
     "image": "sleep.png",
-    "description": "In this project, we explored data from wearable sleep tracking devices.",
+    "description": "In this project, we explored data from wearable sleep tracking devices. Users can input their own daily habits to get their sleep score using our SleepPredictor.",
     "link": "https://lindbergryan04.github.io/SleepTracker/"
   },
 
