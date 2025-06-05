@@ -125,6 +125,75 @@ nav a:hover {
   }
 }
 
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: stretch; /* Make nav items take full width */
+  }
+
+  nav a {
+    text-align: center; /* Ensure text is centered */
+    border-bottom: 1px solid var(--border-color); /* Add a light separator */
+    padding: 0.8em 0.5em; /* Adjust padding for vertical layout */
+  }
+
+  nav a.current,
+  nav a:hover {
+    border-bottom-width: 0.4em; /* Keep consistent border for current/hover */
+    padding-bottom: calc(0.8em - 0.4em + 0.3em); /* Adjust padding to maintain height */
+  }
+
+  .typed-text {
+    font-size: 40px; /* Reduce font size for smaller screens */
+  }
+
+  .projects {
+    grid-template-columns: 1fr; /* Single column for projects */
+  }
+
+  #profile-stats dl {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for stats */
+  }
+
+  .container {
+    flex-direction: column; /* Stack elements in container */
+    gap: 1rem;
+  }
+
+  .stats {
+    grid-template-columns: 1fr; /* Single column for stats sections */
+  }
+
+  #files {
+    grid-template-columns: 1fr; /* Single column for files section */
+  }
+
+  #files > div {
+    grid-template-columns: 1fr; /* Ensure subgrid also stacks */
+  }
+
+  #files dt,
+  #files dd {
+    grid-column: 1; /* Ensure dt and dd are in the single column */
+  }
+
+  .lines-container {
+    padding-top: 0.3em; /* Adjust padding for tighter mobile layout */
+  }
+
+  #scrolly-1 {
+    flex-direction: column; /* Stack scrollytelling sections */
+  }
+
+  #scatter-plot {
+    position: relative; /* Change from sticky for stacked layout */
+    height: auto; /* Adjust height for stacked layout */
+    min-height: 300px; /* Ensure it's not too small */
+    width: 100%; /* Take full width in column flow */
+  }
+}
+
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
@@ -692,6 +761,43 @@ circle:hover {
   left: 0;
   bottom: auto;
   height: 50vh;
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+  .typed-text {
+    font-size: 30px; /* Even smaller font for very small screens */
+    letter-spacing: 0.02em;
+    border-right-width: 0.1em;
+  }
+
+  #profile-stats dl {
+    grid-template-columns: 1fr; /* Single column for stats on very small screens */
+  }
+
+  body {
+    margin-inline: 1em; /* Reduce side margins */
+    padding-inline: 0.5em;
+    font-size: 95%; /* Slightly reduce base font size */
+  }
+
+  h1 {
+    font-size: 1.8em; /* Adjust h1 size */
+  }
+
+  nav a {
+    padding: 0.6em 0.5em;
+  }
+
+  nav a.current,
+  nav a:hover {
+    padding-bottom: calc(0.6em - 0.4em + 0.3em);
+  }
+
+  .legend {
+    padding: 0.5em;
+    gap: 0.5em;
+  }
 }
 
 
