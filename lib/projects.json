@@ -1,5 +1,13 @@
 [
   {
+    "title": "SleepTracker",
+    "year": "2025",
+    "image": "sleep.png",
+    "description": "In this project, we explored data from wearable sleep tracking devices.",
+    "link": "https://lindbergryan04.github.io/SleepTracker/"
+  },
+
+  {
     "title": "The Effect of Prediabetes on the Body’s Ability to Regulate Blood Glucose",
     "year": "2025",
     "image": "glucose.png",
