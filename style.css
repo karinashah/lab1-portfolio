@@ -140,7 +140,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .typed-text {
   font-family: inherit; 
-  font-size: 50px; /* Increase this for bigger text (e.g., 1.25em or 20px) */
+  font-size: 60px; /* Increase this for bigger text (e.g., 1.25em or 20px) */
   display: inline;
   overflow: hidden; 
   white-space: nowrap; 
