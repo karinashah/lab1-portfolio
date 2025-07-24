@@ -320,10 +320,10 @@ button:focus {
 }
 
 /* Resume-specific styles */
-body.resume {
+/* body.resume {
   padding-block: 2em;
 }
-
+ */
 section {
   margin-bottom: 2.5em;
   padding-bottom: 1.5em;
