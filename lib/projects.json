@@ -1,5 +1,13 @@
 [
   {
+    "title": "ClimateBench 2.0",
+    "year": "2025",
+    "image": "climatebench.png",
+    "description": "Our project focuses on evaluating the performance of AI-driven climate models from the Coupled Model Intercomparison Project Phase 6 (CMIP6) to better understand and simulate future climate scenarios.",
+    "link": "https://climate-analytics-lab.github.io/ClimateBench_app/index.html"
+  },
+  
+  {
     "title": "SleepTracker",
     "year": "2025",
     "image": "sleep.png",
