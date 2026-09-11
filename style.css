@@ -201,6 +201,32 @@ button:focus {
   outline-offset: 2px;
 }
 
+button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+/* Contact form: spam honeypot (invisible to people) and submit feedback */
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.form-status {
+  padding: 0.75em 1em;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+}
+
+.form-status[data-kind="error"] {
+  border-color: oklch(55% 0.18 25);
+  background-color: color-mix(in oklch, oklch(55% 0.18 25), canvas 88%);
+}
+
 /* Projects grid */
 .projects {
   display: grid;

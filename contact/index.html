@@ -11,39 +11,83 @@
 
   <h1>Contact Me</h1>
 
-  <form id="contact-form" action="mailto:k7shah@ucsd.edu" method="GET">
+  <!--
+    Messages are delivered by Formspree (https://formspree.io).
+    Replace YOUR_FORM_ID below with the ID from your Formspree dashboard.
+  -->
+  <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <label>
+      Name:
+      <input name="name" required placeholder="Your name" autocomplete="name">
+    </label>
+
+    <label>
+      Email:
+      <input name="email" type="email" required placeholder="you@example.com" autocomplete="email">
+    </label>
+
     <label>
       Subject:
-      <input name="subject" required placeholder="Say hello!">
+      <input name="_subject" required placeholder="Say hello!">
     </label>
-    <br><br>
-  
+
     <label>
-      Body:
-      <textarea name="body" rows="5" cols="40" required placeholder="Your message..."></textarea>
+      Message:
+      <textarea name="message" rows="6" required placeholder="Your message..."></textarea>
     </label>
-    <br><br>
-  
+
+    <!-- Honeypot field for spam bots; hidden from real visitors -->
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="form-honeypot">
+
     <button type="submit">Send</button>
+
+    <p id="form-status" role="status" aria-live="polite" class="form-status" hidden></p>
   </form>
 
   <script>
     const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    const button = form.querySelector('button[type="submit"]');
 
-    form?.addEventListener('submit', (e) => {
-      e.preventDefault();
+    function showStatus(message, kind) {
+      status.textContent = message;
+      status.dataset.kind = kind;
+      status.hidden = false;
+    }
 
-      const data = new FormData(form);
-      const params = [];
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
 
-      for (let [name, value] of data) {
-        params.push(`${name}=${encodeURIComponent(value)}`);
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      status.hidden = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+
+        if (response.ok) {
+          form.reset();
+          showStatus("Thanks! Your message has been sent — I'll get back to you soon.", 'success');
+        } else {
+          const data = await response.json().catch(() => ({}));
+          const detail = data.errors?.map((e) => e.message).join(', ');
+          showStatus(
+            detail
+              ? `Sorry, that didn't go through: ${detail}`
+              : "Sorry, that didn't go through. You can email me directly at k7shah@ucsd.edu.",
+            'error'
+          );
+        }
+      } catch {
+        showStatus("Network error — please try again, or email me directly at k7shah@ucsd.edu.", 'error');
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Send';
       }
-
-      const query = params.join('&');
-      const url = `${form.action}?${query}`;
-
-      location.href = url; // Opens the mail client with properly encoded subject + body
     });
   </script>
 
