@@ -22,13 +22,15 @@ const profileStats = document.querySelector('#profile-stats');
 // so fall back to a link instead of throwing and leaving an empty box.
 if (profileStats) {
   if (githubData && typeof githubData.public_repos === 'number') {
+    const memberSince = new Date(githubData.created_at).getFullYear();
+
     // Each stat is wrapped in a <div> so the grid can reflow to 2 columns on phones.
     profileStats.innerHTML = `
       <dl>
         <div><dt>Public Repos:</dt><dd>${githubData.public_repos}</dd></div>
-        <div><dt>Public Gists:</dt><dd>${githubData.public_gists}</dd></div>
         <div><dt>Followers:</dt><dd>${githubData.followers}</dd></div>
         <div><dt>Following:</dt><dd>${githubData.following}</dd></div>
+        <div><dt>Member Since:</dt><dd>${memberSince}</dd></div>
       </dl>
     `;
   } else {
