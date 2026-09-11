@@ -35,21 +35,40 @@ for (let p of pages) {
   }
 }
 
-// Insert theme toggle
+// Insert theme toggle: a single sun/moon button.
+// Shows a moon in light mode (click for dark) and a sun in dark mode (click for light).
 document.body.insertAdjacentHTML(
   'afterbegin',
   `
-  <label class="color-scheme">
-    Theme:
-    <select>
-      <option value="light dark">Automatic</option>
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-    </select>
-  </label>`
+  <button class="color-scheme" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+    <svg class="icon-moon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+    </svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <circle cx="12" cy="12" r="4.5" fill="currentColor"/>
+      <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="12" y1="2" x2="12" y2="4.5"/>
+        <line x1="12" y1="19.5" x2="12" y2="22"/>
+        <line x1="2" y1="12" x2="4.5" y2="12"/>
+        <line x1="19.5" y1="12" x2="22" y2="12"/>
+        <line x1="4.9" y1="4.9" x2="6.7" y2="6.7"/>
+        <line x1="17.3" y1="17.3" x2="19.1" y2="19.1"/>
+        <line x1="4.9" y1="19.1" x2="6.7" y2="17.3"/>
+        <line x1="17.3" y1="6.7" x2="19.1" y2="4.9"/>
+      </g>
+    </svg>
+  </button>`
 );
 
-let select = document.querySelector('.color-scheme select');
+const themeButton = document.querySelector('.color-scheme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Which scheme is actually showing right now (resolves "auto" to light/dark).
+function currentScheme() {
+  const saved = localStorage.colorScheme;
+  if (saved === 'light' || saved === 'dark') return saved;
+  return prefersDark.matches ? 'dark' : 'light';
+}
 
 function setColorScheme(colorScheme) {
   document.documentElement.classList.remove('light', 'dark', 'auto');
@@ -60,18 +79,28 @@ function setColorScheme(colorScheme) {
     document.documentElement.classList.add(colorScheme);
   }
 
-  select.value = colorScheme;
+  const isDark = currentScheme() === 'dark';
+  const label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+  themeButton.setAttribute('aria-label', label);
+  themeButton.title = label;
+  themeButton.dataset.scheme = isDark ? 'dark' : 'light';
 }
 
 if ('colorScheme' in localStorage) {
   setColorScheme(localStorage.colorScheme);
 } else {
-  setColorScheme('light dark'); // Default to auto
+  setColorScheme('light dark'); // Default to auto (follows the OS setting)
 }
 
-select.addEventListener('input', function (event) {
-  localStorage.colorScheme = event.target.value;
-  setColorScheme(event.target.value);
+themeButton.addEventListener('click', () => {
+  const next = currentScheme() === 'dark' ? 'light' : 'dark';
+  localStorage.colorScheme = next;
+  setColorScheme(next);
+});
+
+// If the user hasn't chosen explicitly, keep the icon in sync with the OS.
+prefersDark.addEventListener('change', () => {
+  if (!('colorScheme' in localStorage)) setColorScheme('light dark');
 });
 
 export async function fetchJSON(url) {

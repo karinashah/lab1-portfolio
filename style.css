@@ -450,9 +450,36 @@ circle.selected {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  font-size: 80%;
-  font-family: inherit;
+  /* Reset the form-button styles that would otherwise apply */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
 }
+
+.color-scheme:hover {
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  transform: rotate(15deg);
+}
+
+.color-scheme:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Show the moon in light mode, the sun in dark mode */
+.color-scheme .icon-sun { display: none; }
+.color-scheme[data-scheme="dark"] .icon-sun { display: block; }
+.color-scheme[data-scheme="dark"] .icon-moon { display: none; }
 
 html {
   transition: background-color 0.4s, color 0.4s, border-color 0.4s;
