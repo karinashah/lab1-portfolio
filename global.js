@@ -110,7 +110,11 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
   for (const project of projects) {
     const article = document.createElement('article');
     const title = project.title || 'Untitled Project';
-    const image = project.image || 'default-image.png';
+    // Thumbnails live in one place (images/projects/) instead of being
+    // duplicated in every folder that renders projects.
+    const image = project.image
+      ? `${BASE_PATH}images/projects/${project.image}`
+      : `${BASE_PATH}images/projects/default-image.png`;
     const description = project.description || 'No description available.';
     const year = project.year || '';
 

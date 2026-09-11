@@ -683,7 +683,7 @@ circle:hover {
   margin-left: auto;
   font-weight: normal;
   display: inline;
-  color: black;
+  color: inherit; /* was hard-coded black, invisible in dark mode */
 }
 
 #time-slider label {
@@ -802,3 +802,29 @@ circle:hover {
 
 
 
+
+/* ---------------------------------------
+   Dark-mode legibility fixes
+   Several surfaces had hard-coded light backgrounds, so in dark mode
+   the (light) text landed on a light card and became unreadable.
+   Light mode is unaffected by these rules.
+---------------------------------------- */
+html.dark .projects article,
+html.dark section:last-of-type {
+  background: oklch(30% 6% 140);
+}
+
+html.dark dl.info {
+  background: oklch(25% 4% 140);
+}
+
+@media (prefers-color-scheme: dark) {
+  html.auto .projects article,
+  html.auto section:last-of-type {
+    background: oklch(30% 6% 140);
+  }
+
+  html.auto dl.info {
+    background: oklch(25% 4% 140);
+  }
+}
