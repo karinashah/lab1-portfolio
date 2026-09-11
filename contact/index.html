@@ -71,7 +71,7 @@
 
         if (response.ok) {
           form.reset();
-          showStatus("Thanks! Your message has been sent — I'll get back to you soon.", 'success');
+          showStatus("Your message has been sent! I'll be in touch soon.", 'success');
         } else {
           const data = await response.json().catch(() => ({}));
           const detail = data.errors?.map((e) => e.message).join(', ');
