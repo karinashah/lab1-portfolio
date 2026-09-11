@@ -117,44 +117,6 @@ nav a:hover {
   }
 }
 
-/* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    align-items: stretch; /* Make nav items take full width */
-  }
-
-  nav a {
-    text-align: center; /* Ensure text is centered */
-    border-bottom: 1px solid var(--border-color); /* Add a light separator */
-    padding: 0.8em 0.5em; /* Adjust padding for vertical layout */
-  }
-
-  nav a.current,
-  nav a:hover {
-    border-bottom-width: 0.4em; /* Keep consistent border for current/hover */
-    padding-bottom: calc(0.8em - 0.4em + 0.3em); /* Adjust padding to maintain height */
-  }
-
-  .typed-text {
-    font-size: 40px; /* Reduce font size for smaller screens */
-  }
-
-  .projects {
-    grid-template-columns: 1fr; /* Single column for projects */
-  }
-
-  #profile-stats dl {
-    grid-template-columns: repeat(2, 1fr); /* Two columns for stats */
-  }
-
-  .container {
-    flex-direction: column; /* Stack elements in container */
-    gap: 1rem;
-  }
-
-}
-
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
@@ -401,16 +363,15 @@ html {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+  margin: 0;
 }
 
 #profile-stats dt {
   font-weight: bold;
-  grid-row: 1;
 }
 
 #profile-stats dd {
-  margin: 0;
-  grid-row: 2;
+  margin: 0.25em 0 0;
 }
 
 .project-year {
@@ -529,41 +490,13 @@ path {
   outline-offset: 4px;
 }
 
-/* Further adjustments for very small screens */
-@media (max-width: 480px) {
-  .typed-text {
-    font-size: 30px; /* Even smaller font for very small screens */
-    letter-spacing: 0.02em;
-    border-right-width: 0.1em;
-  }
+/* Long unbroken strings (URLs, long titles) must never force horizontal scroll */
+h1, h2, h3, p, li, a {
+  overflow-wrap: break-word;
+}
 
-  #profile-stats dl {
-    grid-template-columns: 1fr; /* Single column for stats on very small screens */
-  }
-
-  body {
-    margin-inline: 1em; /* Reduce side margins */
-    padding-inline: 0.5em;
-    font-size: 95%; /* Slightly reduce base font size */
-  }
-
-  h1 {
-    font-size: 1.8em; /* Adjust h1 size */
-  }
-
-  nav a {
-    padding: 0.6em 0.5em;
-  }
-
-  nav a.current,
-  nav a:hover {
-    padding-bottom: calc(0.6em - 0.4em + 0.3em);
-  }
-
-  .legend {
-    padding: 0.5em;
-    gap: 0.5em;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 
@@ -584,5 +517,100 @@ html.dark section:last-of-type {
   html.auto .projects article,
   html.auto section:last-of-type {
     background: oklch(30% 6% 140);
+  }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  body {
+    margin-inline: 0;      /* Reclaim the ~64px the desktop gutters cost on a phone */
+    padding-inline: 1rem;
+  }
+
+  /* Keep the nav as one compact row that wraps to two lines if needed,
+     instead of five full-width stacked rows. Leave room on the right
+     for the theme toggle so it no longer overlaps a link. */
+  nav {
+    flex-wrap: wrap;
+    gap: 0.25em 0.5em;
+    padding: 0.5em 3rem 0.5em 0;
+    margin-bottom: 1.5em;
+  }
+
+  nav a {
+    flex: 1 1 30%;        /* 3 links per row -> a balanced 3 + 2 layout */
+    box-sizing: border-box;
+    padding: 0.7em 0.5em;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  nav a.current,
+  nav a:hover {
+    padding-bottom: 0.5em;
+  }
+
+  .color-scheme {
+    top: 0.75rem;
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .typed-text {
+    font-size: 40px; /* Reduce font size for smaller screens */
+  }
+
+  .projects {
+    grid-template-columns: 1fr; /* Single column for projects */
+  }
+
+  #profile-stats dl {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for stats */
+  }
+
+  /* Projects page: smaller pie, legend spread across the full width */
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  #projects-pie-plot {
+    max-width: 12em;
+    margin: 1em auto 0.5em;
+  }
+
+  .legend {
+    grid-template-columns: repeat(auto-fill, minmax(6.5em, 1fr));
+    margin-block: 0.5em 1.5em;
+    padding: 0.75em;
+    gap: 0.5em 1em;
+  }
+
+  section {
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+  }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+  .typed-text {
+    font-size: 30px; /* Even smaller font for very small screens */
+    letter-spacing: 0.02em;
+    border-right-width: 0.1em;
+  }
+
+  h1 {
+    font-size: 1.8em; /* Adjust h1 size */
+  }
+
+  nav a {
+    padding: 0.6em 0.5em;
+    font-size: 0.9rem;
+  }
+
+  img {
+    margin-block: 12px;
   }
 }
